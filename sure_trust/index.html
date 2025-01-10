@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Background with Border</title>
+    <style>
+        body {
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-repeat: no-repeat;
+            transition: background-image 1s ease-in-out, border-color 1s ease-in-out;
+            border: 10px solid; /* Medium-thick border */
+            box-sizing: border-box; /* Ensures border is part of the viewport size */
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const imageArray = [
+            'sure_trust/images/kia_black.png',
+            'sure_trust/images/kia_blue.jpeg',
+            'sure_trust/images/kia_olive.png',
+            'sure_trust_images/kia_thick.jpeg',
+            'sure_trust/images/kia_red.jpg'
+        ];
+        
+        const borderColors = ['#000000', '#0000FF', '#808000', '#654321', '#FF0000']; // Added red for kia_red.jpg
+        let i = 0;
+
+        const bImage = imageArray.map(a => `url(${a})`);
+
+        const change = () => {
+            document.body.style.backgroundImage = bImage[i];
+            document.body.style.borderColor = borderColors[i];
+            i = (i + 1) % imageArray.length;
+        }
+
+        setInterval(change, 1000);
+    </script>
+</body>
+</html>
